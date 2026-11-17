@@ -904,7 +904,7 @@
 
         function selectConfigMode(m) {
             selectedMode = m;
-            ['1p', '2p', 'learn'].forEach(mod => {
+            ['1p', '2p'].forEach(mod => {
                 document.getElementById(`mode-btn-${mod}`).classList.remove('active');
             });
             document.getElementById(`mode-btn-${m}`).classList.add('active');
@@ -1299,10 +1299,7 @@
         function handleProductClick(prod) {
             speakEnglish(prod.name);
 
-            if (selectedMode === 'learn') {
-                showToast(`🔊 "${prod.name}" (${formatGBP(prod.price)})`);
-                return;
-            }
+            
 
             const limit = selectedDiff === 'easy' ? 1 : (selectedDiff === 'med' ? 2 : 4);
             if (turnPhase === '2p_buyer_pick' && basket.length >= limit) {
