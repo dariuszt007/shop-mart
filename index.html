@@ -747,7 +747,7 @@
             <div class="admin-form-box">
                 <div style="font-weight: 800; font-size: 0.82rem; margin-bottom: 4px;">➕ 自分の新しい商品を追加する</div>
                 <div class="admin-form-row">
-                    <input type="text" id="new-prod-name" placeholder="np. chocolate bar" style="flex: 2;">
+                    <input type="text" id="new-prod-name" placeholder="例：chocolate bar" style="flex: 2;">
                     <input type="text" id="new-prod-emoji" placeholder="🍫" style="width: 45px; text-align: center;">
                     <select id="new-prod-cat" style="flex: 1;">
                         <option value="food">食品</option>
@@ -761,7 +761,7 @@
                         <option value="med">Medium</option>
                         <option value="hard">Hard</option>
                     </select>
-                    <input type="number" id="new-prod-price" placeholder="cena w p (np. 150)" style="width: 95px;">
+                    <input type="number" id="new-prod-price" placeholder="ペンス価格 (例. 150)" style="width: 95px;">
                 </div>
                 <button class="opt-btn active" onclick="addNewProduct()" style="width: 100%; background: var(--mint-green); color: white;">+ 商品追加</button>
             </div>
@@ -1051,7 +1051,7 @@
             const price = parseInt(document.getElementById('new-prod-price').value);
 
             if (!name || isNaN(price) || price <= 0) {
-                alert("Wpisz poprawną nazwę po angielsku oraz cenę w pensach (np. 150)!");
+                alert("英語の商品名とペンス価格（例：150）を正しく入力してください。");
                 return;
             }
 
