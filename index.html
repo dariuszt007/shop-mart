@@ -742,7 +742,7 @@
     <!-- MODAL ZAPLECZA / EDYTOR PRODUKTÓW -->
     <div id="admin-modal">
         <div class="admin-card">
-            <div class="admin-title">⚙️ 商品と価格の管理 (Zaplecze sklepu)</div>
+            <div class="admin-title">⚙️ 商品と価格の管理</div>
 
             <div class="admin-form-box">
                 <div style="font-weight: 800; font-size: 0.82rem; margin-bottom: 4px;">➕ 自分の新しい商品を追加する</div>
@@ -763,17 +763,17 @@
                     </select>
                     <input type="number" id="new-prod-price" placeholder="cena w p (np. 150)" style="width: 95px;">
                 </div>
-                <button class="opt-btn active" onclick="addNewProduct()" style="width: 100%; background: var(--mint-green); color: white;">+ Dodaj produkt do sklepu</button>
+                <button class="opt-btn active" onclick="addNewProduct()" style="width: 100%; background: var(--mint-green); color: white;">+ 商品追加</button>
             </div>
 
-            <div style="font-weight: 800; font-size: 0.82rem; margin-bottom: 4px;">📦 Lista produktów (edytuj ceny lub usuwaj)</div>
+            <div style="font-weight: 800; font-size: 0.82rem; margin-bottom: 4px;">📦 商品リスト（価格編集・削除）</div>
             <div class="admin-products-list" id="admin-products-container">
                 <!-- Generowane dynamicznie -->
             </div>
 
             <div class="admin-footer">
-                <button class="opt-btn" onclick="resetToDefaultProducts()" style="background: #EF4444; color: white;">⚠️ Przywróć domyślne</button>
-                <button class="opt-btn active" onclick="closeAdminModal()" style="background: var(--uk-blue); color: white; padding: 6px 20px;">💾 Zamknij i zapisz</button>
+                <button class="opt-btn" onclick="resetToDefaultProducts()" style="background: #EF4444; color: white;">⚠️ デフォルトに戻す</button>
+                <button class="opt-btn active" onclick="closeAdminModal()" style="background: var(--uk-blue); color: white; padding: 6px 20px;">💾 保存して閉じる</button>
             </div>
         </div>
     </div>
@@ -1021,7 +1021,7 @@
                 row.innerHTML = `
                     <span>${prod.emoji} <strong>${prod.name}</strong> (${prod.cat}, ${prod.tier})</span>
                     <div style="display: flex; gap: 4px; align-items: center;">
-                        <input type="number" value="${prod.price}" onchange="updateProductPrice(${index}, this.value)" title="Cena w pensach"><span>p</span>
+                        <input type="number" value="${prod.price}" onchange="updateProductPrice(${index}, this.value)" title="ペンス価格"><span>p</span>
                         <button class="opt-btn" onclick="deleteProduct(${index})" style="background: #EF4444; color: white; padding: 2px 6px;">🗑️</button>
                     </div>
                 `;
