@@ -1028,6 +1028,41 @@
         }
 
         ////TUTAJ
+        async function saveToGitHubDirectly() {
+    const owner = "TWÓJ_GITHUB_LOGIN";       // Wpisz swój login z GitHub
+    const repo = "NAZWA_REPOZYTORIUM";        // Wpisz nazwę repozytorium z grą
+    const token = "TWÓJ_GITHUB_TOKEN_CLASSIC"; // Wklej tutaj wygenerowany Token z GitHub
+
+    showToast("⏳ Zapisywanie bezpośrednio na GitHubie...");
+
+    const jsonString = JSON.stringify(allProducts, null, 4);
+
+    try {
+        const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/actions/workflows/update-json.yml/dispatches`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Accept": "application/vnd.github+json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                ref: "main", // lub "master" (zależy jak nazywa się Twoja główna gałąź w repo)
+                inputs: {
+                    json_data: jsonString
+                }
+            })
+        });
+
+        if (response.ok) {
+            alert("✅ Sukces! GitHub zaczął aktualizować plik produkty.json. Za kilkanaście sekund zmiany pojawią się w grze.");
+        } else {
+            const errText = await response.text();
+            alert("❌ Błąd zapisu: " + errText);
+        }
+    } catch (err) {
+        alert("❌ Błąd sieci: " + err.message);
+    }
+}
 
         function copyJsonToClipboard() {
             const jsonString = JSON.stringify(allProducts, null, 4);
