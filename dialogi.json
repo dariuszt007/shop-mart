@@ -1,0 +1,24 @@
+{
+    "p1": [
+        "Hi! Can I have {1}, please?",
+        "Hello! I'd like to buy {1}, please.",
+        "Good morning! Could you give me {1}?",
+        "Excuse me, I'm looking for {1}."
+    ],
+    "p2": [
+        "Hi! Can I have {1} and {2}, please?",
+        "Hello! I would like {1} and {2}.",
+        "Hey there! Could I get {1} and {2}, please?"
+    ],
+    "p3": [
+        "Hi! Can I have {1}, {2}, and {3}, please?",
+        "Hello! I'd like to get {1}, {2}, and {3}."
+    ],
+    "p4": [
+        "Hi! I need {1}, {2}, {3}, and {4}, please.",
+        "Hello! Can you get me {1}, {2}, {3}, and {4}?"
+    ],
+    "payPrompt": "That will be {price}, please.",
+    "changePrompt": "Here is {paid}. Please give me my change!",
+    "start2p": "Hi! What would you like to buy today?"
+}
