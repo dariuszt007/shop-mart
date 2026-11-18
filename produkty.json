@@ -1,0 +1,17 @@
+[
+    { "id": "apple", "name": "apple", "price": 50, "emoji": "🍎", "cat": "food", "tier": "easy" },
+    { "id": "banana", "name": "banana", "price": 40, "emoji": "🍌", "cat": "food", "tier": "easy" },
+    { "id": "milk", "name": "milk", "price": 120, "emoji": "🥛", "cat": "drinks", "tier": "easy" },
+    { "id": "water", "name": "water", "price": 85, "emoji": "💧", "cat": "drinks", "tier": "easy" },
+    { "id": "orange_juice", "name": "orange juice", "price": 150, "emoji": "🧃", "cat": "drinks", "tier": "easy" },
+    { "id": "bread", "name": "bread", "price": 130, "emoji": "🍞", "cat": "bakery", "tier": "easy" },
+    { "id": "croissant", "name": "croissant", "price": 110, "emoji": "🥐", "cat": "bakery", "tier": "easy" },
+    { "id": "cheese", "name": "cheese", "price": 280, "emoji": "🧀", "cat": "food", "tier": "easy" },
+    { "id": "carrot", "name": "carrot", "price": 45, "emoji": "🥕", "cat": "food", "tier": "med" },
+    { "id": "cola", "name": "cola drink", "price": 110, "emoji": "🥤", "cat": "drinks", "tier": "med" },
+    { "id": "muffin", "name": "blueberry muffin", "price": 170, "emoji": "🧁", "cat": "dessert", "tier": "med" },
+    { "id": "sandwich", "name": "ham sandwich", "price": 290, "emoji": "🥪", "cat": "fastfood", "tier": "med" },
+    { "id": "double_burger", "name": "double bacon burger", "price": 490, "emoji": "🍔", "cat": "fastfood", "tier": "hard" },
+    { "id": "pizza", "name": "pizza slice", "price": 350, "emoji": "🍕", "cat": "fastfood", "tier": "hard" },
+    { "id": "chocolate_cake", "name": "chocolate cake", "price": 340, "emoji": "🍫", "cat": "dessert", "tier": "hard" }
+]
