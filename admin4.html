@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Kawaii American Mart - Full Speech & Big Fonts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=M+PLUS+Rounded+1c:wght@500;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #FFF8E7;
+            --us-red: #D62828;
+            --us-blue: #1D3557;
+            --accent-yellow: #FFB703;
+            --mint-green: #2A9D8F;
+            --purple-role: #7209B7;
+            --shelf-wood: #D4A373;
+        }
+
+        * {
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            height: 100dvh;
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            font-family: 'M PLUS Rounded 1c', 'Fredoka', sans-serif;
+            background-color: var(--bg-cream);
+            background-image: radial-gradient(#FAD2E1 2px, transparent 2px), radial-gradient(#BEE1E6 2px, var(--bg-cream) 2px);
+            background-size: 30px 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #start-screen {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #1D3557 0%, #457B9D 100%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        .title-badge {
+            background: var(--us-red);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            border: 2px solid white;
+            margin-bottom: 3px;
+        }
+
+        #start-screen h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2rem;
+            margin: 3px 0;
+            text-shadow: 2px 2px 0px var(--us-red);
+        }
+
+        .setup-section {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 5px 10px;
+            border-radius: 12px;
+            margin: 3px 0;
+            border: 2px dashed rgba(255,255,255,0.4);
+            max-width: 580px;
+            width: 100%;
+        }
+
+        .setup-title {
+            font-size: 0.8rem;
+            font-weight: 800;
+            margin-bottom: 3px;
+            color: var(--accent-yellow);
+        }
+
+        .options-row {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .opt-btn {
+            background: white;
+            color: var(--us-blue);
+            border: 2px solid #CBD5E1;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            font-weight: 800;
+            font-size: 0.78rem;
+            cursor: pointer;
+        }
+
+        .opt-btn.active {
+            background: var(--accent-yellow);
+            color: #78350F;
+            border-color: white;
+            box-shadow: 0 3px 0 #D97706;
+        }
+
+        .start-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .big-start-btn {
+            background: var(--mint-green);
+            color: white;
+            border: 3px solid white;
+            padding: 7px 24px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #1B635A;
+        }
+
+        .admin-open-btn {
+            background: #7209B7;
+            color: white;
+            border: 3px solid white;
+            padding: 7px 16px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #480CA8;
+        }
+
+        /* MODAL ZAPLECZA */
+        #admin-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(29, 53, 87, 0.92);
+            z-index: 300;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .admin-card {
+            background: white;
+            width: 100%;
+            max-width: 720px;
+            border-radius: 16px;
+            border: 4px solid var(--accent-yellow);
+            padding: 12px;
+            max-height: 94dvh;
+            display: flex;
+            flex-direction: column;
+            color: var(--us-blue);
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .admin-tab-btn {
+            flex: 1;
+            padding: 6px;
+            border-radius: 8px;
+            border: 2px solid var(--us-blue);
+            background: #F1F5F9;
+            font-weight: 800;
+            font-size: 0.85rem;
+            cursor: pointer;
+            color: var(--us-blue);
+        }
+
+        .admin-tab-btn.active {
+            background: var(--us-blue);
+            color: white;
+        }
+
+        .admin-form-box {
+            background: #F8FAFC;
+            padding: 8px;
+            border-radius: 10px;
+            border: 2px solid #E2E8F0;
+            margin-bottom: 8px;
+        }
+
+        .admin-form-row {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 5px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .admin-form-row input, .admin-form-row select, .dialog-textarea {
+            padding: 5px 8px;
+            border-radius: 6px;
+            border: 2px solid #CBD5E1;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            user-select: text;
+        }
+
+        .dialog-textarea {
+            width: 100%;
+            min-height: 48px;
+            resize: vertical;
+            margin-bottom: 4px;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .admin-products-list {
+            flex: 1;
+            overflow-y: auto;
+            max-height: 220px;
+            border: 2px solid #E2E8F0;
+            border-radius: 8px;
+            padding: 4px;
+        }
+
+        .admin-item-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #F1F5F9;
+            padding: 4px 8px;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            font-size: 0.8rem;
+        }
+
+        .admin-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            gap: 6px;
+        }
+
+        header {
+            background: var(--us-blue);
+            color: white;
+            padding: 4px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 42px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+
+        .header-info {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .scores-container {
+            display: flex;
+            gap: 6px;
+        }
+
+        .score-pill {
+            background: var(--us-red);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            border: 2px solid white;
+        }
+        .score-pill.p2 { background: var(--mint-green); }
+
+        .btn-home {
+            background: #EF4444;
+            color: white;
+            border: none;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 1.45fr 1fr;
+            gap: 8px;
+            padding: 6px 8px 8px 8px;
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .shelves-container {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 14px;
+            padding: 6px;
+            border: 3px solid var(--shelf-wood);
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 5px;
+            flex-shrink: 0;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 4px 4px;
+            border-radius: 6px;
+            border: 2px solid var(--us-blue);
+            background: white;
+            font-weight: 800;
+            font-size: 0.7rem; /* (Japoński - niezmieniony) */
+            cursor: pointer;
+            color: var(--us-blue);
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            background: var(--us-blue);
+            color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            flex: 1;
+            min-height: 0;
+            padding-right: 2px;
+            align-content: start;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #E2E8F0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4px 2px;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 2px 0 #E2E8F0;
+            min-height: 75px;
+        }
+
+        .product-card:active {
+            transform: scale(0.95);
+            border-color: var(--accent-yellow);
+        }
+
+        .product-emoji { font-size: 1.5rem; line-height: 1; margin-bottom: 2px; }
+        
+        /* [TUTAJ ZMIENISZ ROZMIAR]: Nazwy produktów po angielsku na półkach (powiększone) */
+        .product-name-en {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.82rem; /* Powiększone z 0.65rem */
+            font-weight: 700;
+            color: var(--us-blue);
+            text-align: center;
+            line-height: 1.1;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
+        .product-price {
+            background: var(--mint-green);
+            color: white;
+            padding: 1px 4px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.7rem; /* Powiększone */
+            margin-top: 2px;
+        }
+        .sound-icon { position: absolute; top: 2px; right: 3px; font-size: 0.55rem; opacity: 0.5; }
+
+        .counter-area {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            height: 100%;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .turn-banner {
+            background: var(--purple-role);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.8rem; /* (Japoński - niezmieniony) */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid white;
+            flex-shrink: 0;
+        }
+
+        .turn-banner.buyer-turn { background: #E63946; }
+        .turn-banner.seller-turn { background: #2A9D8F; }
+
+        .shopkeeper-box {
+            background: white;
+            border-radius: 12px;
+            padding: 6px 8px;
+            border: 3px solid var(--us-blue);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .avatar {
+            width: 42px;
+            height: 42px;
+            background: #FFE5EC;
+            border-radius: 50%;
+            border: 2px solid var(--us-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            flex-shrink: 0;
+        }
+
+        .speech-bubble { flex: 1; min-width: 0; }
+        
+        /* [TUTAJ ZMIENISZ ROZMIAR]: Główne teksty angielskie wypowiadane w grze (powiększone i wyraźne) */
+        .speech-en {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.1rem; /* Powiększone z 0.85rem dla lepszej widoczności */
+            color: var(--us-blue);
+            font-weight: 700;
+            margin: 0 0 2px 0;
+            line-height: 1.2;
+        }
+        
+        /* (Japońska wskazówka - rozmiar celowo pozostawiony mniejszy) */
+        .speech-jp-hint {
+            font-size: 0.68rem; 
+            color: #475569;
+            margin: 0 0 4px 0;
+            font-weight: 700;
+        }
+
+        .audio-controls-row {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .listen-btn {
+            background: #E0F2FE;
+            color: #0369A1;
+            border: 2px solid #0369A1;
+            padding: 2px 7px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.68rem;
+            cursor: pointer;
+        }
+
+        .mic-btn {
+            background: #FEE2E2;
+            color: #B91C1C;
+            border: 2px solid #DC2626;
+            padding: 2px 7px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.68rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .mic-btn.recording {
+            background: #DC2626;
+            color: white;
+            animation: pulseMic 1s infinite;
+        }
+
+        @keyframes pulseMic {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+            100% { transform: scale(1); }
+        }
+
+        .speech-result-box {
+            margin-top: 4px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 3px 6px;
+            border-radius: 6px;
+            background: #F8FAFC;
+            border: 1px solid #CBD5E1;
+            display: none;
+        }
+
+        .basket-box {
+            background: white;
+            border-radius: 12px;
+            padding: 6px 8px;
+            border: 3px solid var(--us-blue);
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .basket-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 800;
+            color: var(--us-blue);
+            border-bottom: 2px dashed #CBD5E1;
+            padding-bottom: 3px;
+            flex-shrink: 0;
+            font-size: 0.8rem;
+        }
+
+        .basket-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            padding: 4px 0;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            flex: 1;
+            min-height: 0;
+            align-content: start;
+        }
+
+        .basket-chip {
+            background: #FEF3C7;
+            border: 2px solid var(--accent-yellow);
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 0.82rem; /* Powiększone */
+            cursor: pointer;
+        }
+
+        .basket-actions {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+            padding-top: 3px;
+        }
+
+        .btn-clear {
+            background: #F1F5F9;
+            color: #475569;
+            border: 2px solid #CBD5E1;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .btn-main-action {
+            flex: 1;
+            background: var(--mint-green);
+            color: white;
+            border: none;
+            padding: 7px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 3px 0 #1E7167;
+        }
+
+        /* MODAL PŁATNOŚCI Z MIKROFONAMI */
+        #payment-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(29, 53, 87, 0.88);
+            z-index: 50;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+        }
+
+        .payment-card {
+            background: var(--bg-cream);
+            width: 100%;
+            max-width: 680px;
+            border-radius: 16px;
+            border: 4px solid var(--accent-yellow);
+            padding: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            max-height: 94dvh;
+            overflow-y: auto;
+        }
+
+        .modal-role-header {
+            text-align: center;
+            background: var(--us-blue);
+            color: white;
+            padding: 4px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .payment-top {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 10px;
+            margin-bottom: 5px;
+            border: 2px solid var(--us-blue);
+        }
+
+        .money-display { text-align: center; }
+        .money-label { font-size: 0.68rem; font-weight: 800; color: #64748B; }
+        .money-value { font-family: 'Fredoka', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--us-red); }
+        .money-value.paid { color: var(--mint-green); }
+
+        .payment-speech-box {
+            background: #F8FAFC;
+            border: 2px solid #CBD5E1;
+            border-radius: 10px;
+            padding: 6px 10px;
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .wallet-section-title { font-weight: 800; color: var(--us-blue); margin: 3px 0; font-size: 0.75rem; }
+
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+
+        .banknote {
+            height: 34px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            border: 2px solid rgba(255,255,255,0.6);
+            box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+        }
+        .banknote:active { transform: scale(0.95); }
+        .note-5 { background: linear-gradient(135deg, #2A9D8F, #21867A); }
+        .note-10 { background: linear-gradient(135deg, #E76F51, #D65A3C); }
+        .note-20 { background: linear-gradient(135deg, #7209B7, #560BAD); }
+        .note-50 { background: linear-gradient(135deg, #D62828, #B21E1E); }
+
+        .coins-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 4px;
+            margin-bottom: 6px;
+        }
+
+        .coin {
+            aspect-ratio: 1;
+            max-height: 40px;
+            margin: 0 auto;
+            width: 100%;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 0.78rem;
+            cursor: pointer;
+            box-shadow: 0 2px 0 rgba(0,0,0,0.25);
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+        .coin:active { transform: scale(0.92); }
+        .coin-copper { background: #B87333; color: white; }
+        .coin-silver { background: #CBD5E1; color: #1E293B; }
+        .coin-gold { background: #FBBF24; color: #78350F; }
+
+        .payment-footer { display: flex; gap: 8px; }
+        .btn-pay-confirm {
+            flex: 2;
+            background: var(--us-red);
+            color: white;
+            border: none;
+            padding: 7px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 3px 0 #9B2226;
+        }
+        .btn-pay-reset {
+            flex: 1;
+            background: #64748B;
+            color: white;
+            border: none;
+            padding: 7px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        #toast {
+            position: fixed;
+            top: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--us-blue);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            border: 2px solid var(--accent-yellow);
+            z-index: 200;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="start-screen">
+        <div class="title-badge">🇺🇸 スーパーマーケット英語ゲーム 🇯🇵</div>
+        <h1>Kawaii English Mart</h1>
+        <p style="font-size: 0.85rem; margin: 0 0 3px 0;" id="loading-msg">⏳ GitHubから製品データを読み込んでいます...</p>
+
+        <div class="setup-section">
+            <div class="setup-title">👥 ゲームモード (Game Mode)</div>
+            <div class="options-row">
+                <button class="opt-btn active" id="mode-btn-1p" onclick="selectConfigMode('1p')">👤 1人 (交代)</button>
+                <button class="opt-btn" id="mode-btn-2p" onclick="selectConfigMode('2p')">👫 2人 (対戦)</button>
+            </div>
+        </div>
+
+        <div class="setup-section">
+            <div class="setup-title">⭐ むずかしさ (Difficulty)</div>
+            <div class="options-row">
+                <button class="opt-btn active" id="diff-btn-easy" onclick="selectConfigDiff('easy')">Easy (かんたん)</button>
+                <button class="opt-btn" id="diff-btn-med" onclick="selectConfigDiff('med')">Medium (ふつう)</button>
+                <button class="opt-btn" id="diff-btn-hard" onclick="selectConfigDiff('hard')">Hard (むずかしい)</button>
+            </div>
+        </div>
+
+        <div class="setup-section">
+            <div class="setup-title">🗣️ 音声スピード (Speech Speed)</div>
+            <div class="options-row">
+                <button class="opt-btn" id="speed-btn-05" onclick="selectConfigSpeed(0.5)">0.5x</button>
+                <button class="opt-btn" id="speed-btn-07" onclick="selectConfigSpeed(0.7)">0.7x</button>
+                <button class="opt-btn active" id="speed-btn-09" onclick="selectConfigSpeed(0.9)">0.9x</button>
+                <button class="opt-btn" id="speed-btn-12" onclick="selectConfigSpeed(1.2)">1.2x</button>
+            </div>
+        </div>
+
+        <div class="start-actions">
+            <button class="admin-open-btn" onclick="openAdminModal()">⚙️ 商品・セリフ管理</button>
+            <button class="big-start-btn" id="start-game-btn" onclick="launchGame()" disabled style="opacity: 0.5;">🚀 読み込み中...</button>
+        </div>
+    </div>
+
+    <!-- MODAL ZAPLECZA -->
+    <div id="admin-modal">
+        <div class="admin-card">
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" id="tab-admin-products" onclick="switchAdminTab('products')">📦 商品リスト管理</button>
+                <button class="admin-tab-btn" id="tab-admin-dialogs" onclick="switchAdminTab('dialogs')">💬 セリフ設定 (Dialogi)</button>
+            </div>
+
+            <!-- ZAKŁADKA 1: PRODUKTY -->
+            <div id="admin-section-products" style="display: flex; flex-direction: column; flex: 1; min-height: 0;">
+                <div class="admin-form-box">
+                    <div style="font-weight: 800; font-size: 0.8rem; margin-bottom: 4px;" id="admin-form-title">➕ 新しい商品を追加 / 編集</div>
+                    <input type="hidden" id="edit-index" value="-1">
+                    <div class="admin-form-row">
+                        <input type="text" id="new-prod-name" placeholder="英語名 (例: apple)" style="flex: 2; min-width: 110px;">
+                        <input type="text" id="new-prod-emoji" placeholder="🍎" style="width: 45px; text-align: center;">
+                        <input type="text" id="new-prod-cat" placeholder="カテゴリ (例: food)" style="flex: 1.5; min-width: 100px;" list="cat-suggestions">
+                        <datalist id="cat-suggestions">
+                            <option value="food">
+                            <option value="drinks">
+                            <option value="bakery">
+                            <option value="dessert">
+                            <option value="fastfood">
+                        </datalist>
+                        <select id="new-prod-tier" style="width: 75px;">
+                            <option value="easy">Easy</option>
+                            <option value="med">Med</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                        <input type="number" id="new-prod-price" placeholder="価格(p)" style="width: 75px;">
+                    </div>
+                    <div style="display: flex; gap: 5px;">
+                        <button class="opt-btn active" id="save-prod-btn" onclick="saveProduct()" style="flex: 2; background: var(--mint-green); color: white;">+ 商品を追加する</button>
+                        <button class="opt-btn" id="cancel-edit-btn" onclick="cancelEdit()" style="flex: 1; background: #94A3B8; color: white; display: none;">キャンセル</button>
+                    </div>
+                </div>
+
+                <div class="admin-products-list" id="admin-products-container"></div>
+
+                <div class="admin-footer">
+                    <button class="opt-btn" onclick="saveToGitHubAutomatically()" style="background: var(--us-blue); color: white; flex: 1;">☁️ GitHubに保存する</button>
+                    <button class="opt-btn active" onclick="closeAdminModal()" style="background: var(--mint-green); color: white; flex: 1;">🎮 ゲームへ戻る</button>
+                </div>
+            </div>
+
+            <!-- ZAKŁADKA 2: DIALOGI (ZAMÓWIENIA + PŁATNOŚCI) -->
+            <div id="admin-section-dialogs" style="display: none; flex-direction: column; flex: 1; overflow-y: auto; padding-right: 4px;">
+                <p style="font-size: 0.75rem; color: #475569; margin: 0 0 6px 0;">
+                    ※ 1行に1つのセリフを入力。<code>{1}</code>, <code>{2}</code>, <code>{3}</code>, <code>{4}</code> は商品名（a/an付き）に変換されます。
+                </p>
+
+                <label style="font-size: 0.78rem; font-weight: 800;">🛒 商品1つの注文 (Easy):</label>
+                <textarea id="dialog-1-input" class="dialog-textarea"></textarea>
+
+                <label style="font-size: 0.78rem; font-weight: 800;">🛒 商品2つの注文 (Medium):</label>
+                <textarea id="dialog-2-input" class="dialog-textarea"></textarea>
+
+                <label style="font-size: 0.78rem; font-weight: 800;">🛒 商品3つの注文 (Hard):</label>
+                <textarea id="dialog-3-input" class="dialog-textarea"></textarea>
+
+                <label style="font-size: 0.78rem; font-weight: 800;">🛒 商品4つの注文 (Hard):</label>
+                <textarea id="dialog-4-input" class="dialog-textarea"></textarea>
+
+                <label style="font-size: 0.78rem; font-weight: 800;">💵 レジでの金額の案内 (That will be ...):</label>
+                <input type="text" id="dialog-pay-prompt" style="width: 100%; padding: 5px; border-radius: 6px; border: 2px solid #CBD5E1; margin-bottom: 6px; font-weight: 700; user-select: text;" placeholder="That will be {price}, please.">
+
+                <label style="font-size: 0.78rem; font-weight: 800;">💰 おつりの要求 (Here is ...):</label>
+                <input type="text" id="dialog-change-prompt" style="width: 100%; padding: 5px; border-radius: 6px; border: 2px solid #CBD5E1; margin-bottom: 6px; font-weight: 700; user-select: text;" placeholder="Here is {paid}. Please give me my change!">
+
+                <label style="font-size: 0.78rem; font-weight: 800;">🏪 2P対戦時の開始セリフ:</label>
+                <input type="text" id="dialog-2p-start" style="width: 100%; padding: 5px; border-radius: 6px; border: 2px solid #CBD5E1; margin-bottom: 8px; font-weight: 700; user-select: text;">
+
+                <div class="admin-footer">
+                    <button class="opt-btn" onclick="resetDialogsToDefault()" style="background: #64748B; color: white;">🔄 初期設定に戻す</button>
+                    <button class="opt-btn active" onclick="saveCustomDialogs()" style="background: var(--mint-green); color: white; flex: 1;">💾 セリフを保存する</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast"></div>
+
+    <header>
+        <div class="header-info">
+            <button class="btn-home" onclick="returnToMenu()">🏠 メニュー</button>
+            <span id="diff-badge-display">⭐ Easy</span>
+        </div>
+        <div class="scores-container">
+            <div class="score-pill" id="score-box-1">⭐ P1: <span id="score1">0</span></div>
+            <div class="score-pill p2" id="score-box-2" style="display: none;">🏪 P2: <span id="score2">0</span></div>
+        </div>
+    </header>
+
+    <main>
+        <section class="shelves-container">
+            <div class="category-tabs" id="category-tabs-container">
+                <button class="tab-btn active" onclick="filterCategory('all', this)">すべて (All)</button>
+            </div>
+            <div class="products-grid" id="products-grid"></div>
+        </section>
+
+        <section class="counter-area">
+            <div class="turn-banner" id="turn-banner">
+                <span id="turn-role-text">🛒 おきゃくさんのばん</span>
+                <span id="round-info">Round 1</span>
+            </div>
+
+            <div class="shopkeeper-box">
+                <div class="avatar" id="keeper-avatar">👩‍💼</div>
+                <div class="speech-bubble">
+                    <p class="speech-en" id="keeper-text-en">"Hello!"</p>
+                    <p class="speech-jp-hint" id="keeper-text-jp">音声を聞いて英語を練習しよう！</p>
+                    <div class="audio-controls-row">
+                        <button class="listen-btn" onclick="repeatSpeech()">🔊 もういちど</button>
+                        <button class="mic-btn" id="mic-record-btn" onclick="toggleStudentRecording('main')">🎤 発音チェック</button>
+                    </div>
+                    <div class="speech-result-box" id="speech-result-box"></div>
+                </div>
+            </div>
+
+            <div class="basket-box">
+                <div class="basket-header">
+                    <span id="basket-title">🧺 かいものかご</span>
+                    <span id="basket-total-wrapper">ごうけい: <strong id="basket-total-display" style="color: var(--us-red); font-size: 0.9rem;">£0.00</strong></span>
+                </div>
+
+                <div class="basket-items" id="basket-items"></div>
+
+                <div class="basket-actions">
+                    <button class="btn-clear" onclick="clearBasket()">🗑️ けす</button>
+                    <button class="btn-main-action" id="main-action-btn" onclick="handleMainAction()">次へ</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL PŁATNOŚCI Z MIKROFONEM -->
+    <div id="payment-modal">
+        <div class="payment-card">
+            <div class="modal-role-header" id="modal-role-title">🛒 お金をはらおう！</div>
+
+            <div class="payment-top">
+                <div class="money-display">
+                    <div class="money-label" id="pay-label-1">おかいけい</div>
+                    <div class="money-value" id="pay-val-1">£0.00</div>
+                </div>
+                <div style="font-size: 1.3rem;">➡️</div>
+                <div class="money-display">
+                    <div class="money-label" id="pay-label-2">だしたおかね</div>
+                    <div class="money-value paid" id="pay-val-2">£0.00</div>
+                </div>
+            </div>
+
+            <!-- SEKCJA AUDIO I MIKROFONU W KASIE -->
+            <div class="payment-speech-box">
+                <div>
+                    <p class="speech-en" id="modal-speech-en" style="font-size: 0.95rem; margin: 0;">"That will be..."</p>
+                    <p class="speech-jp-hint" style="margin: 2px 0 0 0;">レジのセリフも発音練習できます</p>
+                </div>
+                <div style="display: flex; gap: 4px;">
+                    <button class="listen-btn" onclick="speakModalPrompt()">🔊 きく</button>
+                    <button class="mic-btn" id="mic-modal-btn" onclick="toggleStudentRecording('modal')">🎤 チェック</button>
+                </div>
+            </div>
+            <div class="speech-result-box" id="modal-speech-result-box" style="margin-bottom: 6px;"></div>
+
+            <div class="wallet-section-title">💵 おさつ (Pounds)</div>
+            <div class="notes-grid">
+                <div class="banknote note-5" onclick="addMoney(500)">£5</div>
+                <div class="banknote note-10" onclick="addMoney(1000)">£10</div>
+                <div class="banknote note-20" onclick="addMoney(2000)">£20</div>
+                <div class="banknote note-50" onclick="addMoney(5000)">£50</div>
+            </div>
+
+            <div class="wallet-section-title">🪙 コイン (Pence & Pounds)</div>
+            <div class="coins-grid">
+                <div class="coin coin-copper" onclick="addMoney(1)">1p</div>
+                <div class="coin coin-copper" onclick="addMoney(2)">2p</div>
+                <div class="coin coin-silver" onclick="addMoney(5)">5p</div>
+                <div class="coin coin-silver" onclick="addMoney(10)">10p</div>
+                <div class="coin coin-silver" onclick="addMoney(20)">20p</div>
+                <div class="coin coin-silver" onclick="addMoney(50)">50p</div>
+                <div class="coin coin-gold" onclick="addMoney(100)">£1</div>
+                <div class="coin coin-gold" onclick="addMoney(200)">£2</div>
+            </div>
+
+            <div class="payment-footer">
+                <button class="btn-pay-reset" onclick="resetPayment()">やりなおす</button>
+                <button class="btn-pay-confirm" id="modal-confirm-btn" onclick="confirmMoneyAction()">✨ はらう</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allProducts = [];
+        let activeProducts = [];
+        let selectedMode = '1p';
+        let selectedDiff = 'easy';
+        let selectedSpeed = 0.9;
+        let currentCategoryFilter = 'all';
+
+        const defaultDialogs = {
+            p1: [
+                "Hi! Can I have {1}, please?",
+                "Hello! I'd like to buy {1}, please.",
+                "Good morning! Could you give me {1}?",
+                "Excuse me, I'm looking for {1}."
+            ],
+            p2: [
+                "Hi! Can I have {1} and {2}, please?",
+                "Hello! I would like {1} and {2}.",
+                "Hey there! Could I get {1} and {2}, please?"
+            ],
+            p3: [
+                "Hi! Can I have {1}, {2}, and {3}, please?",
+                "Hello! I'd like to get {1}, {2}, and {3}."
+            ],
+            p4: [
+                "Hi! I need {1}, {2}, {3}, and {4}, please.",
+                "Hello! Can you get me {1}, {2}, {3}, and {4}?"
+            ],
+            payPrompt: "That will be {price}, please.",
+            changePrompt: "Here is {paid}. Please give me my change!",
+            start2p: "Hi! What would you like to buy today?"
+        };
+
+        let customDialogs = JSON.parse(localStorage.getItem('mart_custom_dialogs')) || JSON.parse(JSON.stringify(defaultDialogs));
+
+        async function loadProductsFromServer() {
+            try {
+                const response = await fetch('produkty.json?t=' + Date.now());
+                if (!response.ok) throw new Error('Błąd pobierania');
+                allProducts = await response.json();
+                document.getElementById('loading-msg').textContent = '✅ GitHubからデータを読み込みました！';
+                enableStartButton();
+            } catch (err) {
+                console.warn('Używam trybu awaryjnego:', err);
+                allProducts = [
+                    { id: 'apple', name: 'apple', price: 50, emoji: '🍎', cat: 'food', tier: 'easy' },
+                    { id: 'banana', name: 'banana', price: 40, emoji: '🍌', cat: 'food', tier: 'easy' },
+                    { id: 'milk', name: 'milk', price: 120, emoji: '🥛', cat: 'drinks', tier: 'easy' }
+                ];
+                document.getElementById('loading-msg').textContent = '⚠️ オフラインモード (デフォルトデータ)';
+                enableStartButton();
+            }
+        }
+
+        function enableStartButton() {
+            const startBtn = document.getElementById('start-game-btn');
+            startBtn.disabled = false;
+            startBtn.style.opacity = '1';
+            startBtn.textContent = '🚀 ゲームスタート！';
+        }
+
+        loadProductsFromServer();
+
+        function selectConfigMode(m) {
+            selectedMode = m;
+            ['1p', '2p'].forEach(mod => {
+                document.getElementById(`mode-btn-${mod}`).classList.remove('active');
+            });
+            document.getElementById(`mode-btn-${m}`).classList.add('active');
+        }
+
+        function selectConfigDiff(d) {
+            selectedDiff = d;
+            ['easy', 'med', 'hard'].forEach(diff => {
+                document.getElementById(`diff-btn-${diff}`).classList.remove('active');
+            });
+            document.getElementById(`diff-btn-${d}`).classList.add('active');
+        }
+
+        function selectConfigSpeed(spd) {
+            selectedSpeed = spd;
+            [0.5, 0.7, 0.9, 1.2].forEach(s => {
+                const idMap = { 0.5: '05', 0.7: '07', 0.9: '09', 1.2: '12' };
+                document.getElementById(`speed-btn-${idMap[s]}`).classList.remove('active');
+            });
+            const activeIdMap = { 0.5: '05', 0.7: '07', 0.9: '09', 1.2: '12' };
+            document.getElementById(`speed-btn-${activeIdMap[spd]}`).classList.add('active');
+        }
+
+        function returnToMenu() {
+            document.getElementById('start-screen').style.display = 'flex';
+        }
+
+        function openAdminModal() {
+            cancelEdit();
+            renderAdminList();
+            loadDialogInputs();
+            switchAdminTab('products');
+            document.getElementById('admin-modal').style.display = 'flex';
+        }
+
+        function switchAdminTab(tab) {
+            document.getElementById('tab-admin-products').classList.toggle('active', tab === 'products');
+            document.getElementById('tab-admin-dialogs').classList.toggle('active', tab === 'dialogs');
+            document.getElementById('admin-section-products').style.display = tab === 'products' ? 'flex' : 'none';
+            document.getElementById('admin-section-dialogs').style.display = tab === 'dialogs' ? 'flex' : 'none';
+        }
+
+        function loadDialogInputs() {
+            document.getElementById('dialog-1-input').value = customDialogs.p1.join('\n');
+            document.getElementById('dialog-2-input').value = customDialogs.p2.join('\n');
+            document.getElementById('dialog-3-input').value = customDialogs.p3.join('\n');
+            document.getElementById('dialog-4-input').value = customDialogs.p4.join('\n');
+            document.getElementById('dialog-pay-prompt').value = customDialogs.payPrompt || defaultDialogs.payPrompt;
+            document.getElementById('dialog-change-prompt').value = customDialogs.changePrompt || defaultDialogs.changePrompt;
+            document.getElementById('dialog-2p-start').value = customDialogs.start2p;
+        }
+
+        function saveCustomDialogs() {
+            const parseLines = (id, fallback) => {
+                const lines = document.getElementById(id).value.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+                return lines.length > 0 ? lines : fallback;
+            };
+
+            customDialogs = {
+                p1: parseLines('dialog-1-input', defaultDialogs.p1),
+                p2: parseLines('dialog-2-input', defaultDialogs.p2),
+                p3: parseLines('dialog-3-input', defaultDialogs.p3),
+                p4: parseLines('dialog-4-input', defaultDialogs.p4),
+                payPrompt: document.getElementById('dialog-pay-prompt').value.trim() || defaultDialogs.payPrompt,
+                changePrompt: document.getElementById('dialog-change-prompt').value.trim() || defaultDialogs.changePrompt,
+                start2p: document.getElementById('dialog-2p-start').value.trim() || defaultDialogs.start2p
+            };
+
+            localStorage.setItem('mart_custom_dialogs', JSON.stringify(customDialogs));
+            showToast("💬 セリフ設定を保存しました！");
+        }
+
+        function resetDialogsToDefault() {
+            if (confirm("セリフを初期設定に戻しますか？")) {
+                customDialogs = JSON.parse(JSON.stringify(defaultDialogs));
+                localStorage.removeItem('mart_custom_dialogs');
+                loadDialogInputs();
+                showToast("🔄 初期設定に戻しました");
+            }
+        }
+
+        function closeAdminModal() {
+            document.getElementById('admin-modal').style.display = 'none';
+            showToast("💾 ローカルリストを更新しました！");
+        }
+
+        function renderAdminList() {
+            const container = document.getElementById('admin-products-container');
+            container.innerHTML = '';
+            allProducts.forEach((prod, index) => {
+                const row = document.createElement('div');
+                row.className = 'admin-item-row';
+                row.innerHTML = `
+                    <span>${prod.emoji} <strong>${prod.name}</strong> (${prod.cat}, ${prod.tier}, ${prod.price}p)</span>
+                    <div style="display: flex; gap: 4px; align-items: center;">
+                        <button class="opt-btn" onclick="startEditProduct(${index})" style="background: #3B82F6; color: white; padding: 2px 6px;">✏️ 編集</button>
+                        <button class="opt-btn" onclick="deleteProduct(${index})" style="background: #EF4444; color: white; padding: 2px 6px;">🗑️</button>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        function startEditProduct(index) {
+            const prod = allProducts[index];
+            document.getElementById('edit-index').value = index;
+            document.getElementById('new-prod-name').value = prod.name;
+            document.getElementById('new-prod-emoji').value = prod.emoji;
+            document.getElementById('new-prod-cat').value = prod.cat;
+            document.getElementById('new-prod-tier').value = prod.tier;
+            document.getElementById('new-prod-price').value = prod.price;
+
+            document.getElementById('admin-form-title').textContent = "✏️ 既存の商品の編集";
+            document.getElementById('save-prod-btn').textContent = "💾 変更を保存する";
+            document.getElementById('cancel-edit-btn').style.display = 'block';
+        }
+
+        function cancelEdit() {
+            document.getElementById('edit-index').value = "-1";
+            document.getElementById('new-prod-name').value = '';
+            document.getElementById('new-prod-emoji').value = '';
+            document.getElementById('new-prod-cat').value = '';
+            document.getElementById('new-prod-price').value = '';
+
+            document.getElementById('admin-form-title').textContent = "➕ 新しい商品を追加 / 編集";
+            document.getElementById('save-prod-btn').textContent = "+ 商品を追加する";
+            document.getElementById('cancel-edit-btn').style.display = 'none';
+        }
+
+        function saveProduct() {
+            const editIdx = parseInt(document.getElementById('edit-index').value);
+            const name = document.getElementById('new-prod-name').value.trim().toLowerCase();
+            const emoji = document.getElementById('new-prod-emoji').value.trim() || '📦';
+            const cat = document.getElementById('new-prod-cat').value.trim().toLowerCase() || 'general';
+            const tier = document.getElementById('new-prod-tier').value;
+            const price = parseInt(document.getElementById('new-prod-price').value);
+
+            if (!name || isNaN(price) || price <= 0) {
+                alert("英語名と正しい価格(p)を入力してください！");
+                return;
+            }
+
+            if (editIdx === -1) {
+                const newId = name.replace(/\s+/g, '_') + '_' + Date.now();
+                allProducts.push({ id: newId, name: name, price: price, emoji: emoji, cat: cat, tier: tier });
+                showToast("✨ 商品を追加しました！");
+            } else {
+                allProducts[editIdx].name = name;
+                allProducts[editIdx].emoji = emoji;
+                allProducts[editIdx].cat = cat;
+                allProducts[editIdx].tier = tier;
+                allProducts[editIdx].price = price;
+                showToast("✏️ 商品を更新しました！");
+                cancelEdit();
+            }
+
+            renderAdminList();
+        }
+
+        function deleteProduct(index) {
+            if (confirm("この商品を削除してもよろしいですか？")) {
+                allProducts.splice(index, 1);
+                renderAdminList();
+                showToast("🗑️ 削除しました");
+            }
+        }
+
+        async function saveToGitHubAutomatically() {
+            const workerUrl = "https://twoj-worker.twojanazwa.workers.dev"; // <-- WKLEJ SWÓJ ADRES WORKERA
+
+            showToast("⏳ GitHubに保存しています...");
+
+            try {
+                const response = await fetch(workerUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(allProducts, null, 4)
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    alert("✅ 保存完了！GitHubの produkty.json を更新しました。");
+                } else {
+                    alert("❌ 保存エラー: " + result.error);
+                }
+            } catch (err) {
+                alert("❌ 通信エラー: " + err.message);
+            }
+        }
+
+        function getArticle(word) {
+            const vowels = ['a', 'e', 'i', 'o', 'u'];
+            return vowels.includes(word.charAt(0).toLowerCase()) ? 'an' : 'a';
+        }
+
+        function formatDialogTemplate(template, names) {
+            let result = template;
+            names.forEach((name, idx) => {
+                const itemWithArticle = `${getArticle(name)} ${name}`;
+                result = result.replace(`{${idx + 1}}`, itemWithArticle);
+            });
+            return result;
+        }
+
+        let roundNumber = 1;
+        let turnPhase = '1p_buyer';
+        let paymentPhase = 'buyer_pays';
+        let basket = [];
+        let targetOrder = [];
+        let lastSpokenText = "";
+        let lastModalSpokenText = "";
+        let targetBillPence = 0;
+        let buyerPaidPence = 0;
+        let expectedChangePence = 0;
+        let currentInputMoney = 0;
+        let score1 = 0;
+        let score2 = 0;
+        let englishVoice = null;
+
+        function loadEnglishVoice() {
+            const voices = window.speechSynthesis.getVoices();
+            if (!voices.length) return;
+
+            const usVoices = voices.filter(v => v.lang === 'en-US' || v.lang === 'en_US');
+            const preferredUS = ['Premium', 'Enhanced', 'Natural', 'Siri', 'Samantha', 'Ava', 'Allison', 'Alex', 'Google US English'];
+
+            for (const pref of preferredUS) {
+                const found = usVoices.find(v => v.name.includes(pref));
+                if (found) {
+                    englishVoice = found;
+                    return;
+                }
+            }
+
+            englishVoice = usVoices[0] ||
+                           voices.find(v => v.lang.startsWith('en-US')) ||
+                           voices.find(v => v.lang.startsWith('en'));
+        }
+
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = loadEnglishVoice;
+            loadEnglishVoice();
+        }
+
+        function speakEnglish(text) {
+            if (!('speechSynthesis' in window)) return;
+            window.speechSynthesis.cancel();
+
+            const naturalText = text.replace(/!/g, '.').replace(/,\s*/g, ', ');
+            const u = new SpeechSynthesisUtterance(naturalText);
+            u.lang = 'en-US';
+            if (englishVoice) u.voice = englishVoice;
+            u.rate = selectedSpeed;
+            u.pitch = 1.03;
+            window.speechSynthesis.speak(u);
+        }
+
+        // UNIWERSALNA FUNKCJA ROZPOZNAWANIA MOWY (GŁÓWNY EKRAN + KASA)
+        let recognition = null;
+
+        function toggleStudentRecording(context) {
+            const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRec) {
+                alert("⚠️ このブラウザは音声認識に対応していません。(Safari または Chrome を使用してください)");
+                return;
+            }
+
+            const btnId = context === 'main' ? 'mic-record-btn' : 'mic-modal-btn';
+            const resBoxId = context === 'main' ? 'speech-result-box' : 'modal-speech-result-box';
+            const targetText = context === 'main' ? lastSpokenText : lastModalSpokenText;
+
+            const micBtn = document.getElementById(btnId);
+            const resBox = document.getElementById(resBoxId);
+
+            recognition = new SpeechRec();
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            recognition.onstart = () => {
+                micBtn.classList.add('recording');
+                micBtn.textContent = "🛑 聞き取り中...";
+                resBox.style.display = 'block';
+                resBox.style.color = '#1D3557';
+                resBox.textContent = "🎤 英語で話してください...";
+            };
+
+            recognition.onresult = (event) => {
+                const spoken = event.results[0][0].transcript;
+                evaluatePronunciation(spoken, targetText, resBoxId);
+            };
+
+            recognition.onerror = (event) => {
+                resBox.style.display = 'block';
+                resBox.style.color = '#DC2626';
+                resBox.textContent = `❌ エラー: ${event.error}`;
+            };
+
+            recognition.onend = () => {
+                micBtn.classList.remove('recording');
+                micBtn.textContent = context === 'main' ? "🎤 発音チェック" : "🎤 チェック";
+            };
+
+            recognition.start();
+        }
+
+        function evaluatePronunciation(spoken, target, resBoxId) {
+            const resBox = document.getElementById(resBoxId);
+            const clean = str => str.toLowerCase().replace(/[.,!?'"-]/g, '').trim();
+
+            const spokenWords = clean(spoken).split(/\s+/).filter(Boolean);
+            const targetWords = clean(target).split(/\s+/).filter(Boolean);
+
+            if (targetWords.length === 0) return;
+
+            let matches = 0;
+            targetWords.forEach(w => {
+                if (spokenWords.includes(w)) matches++;
+            });
+
+            const accuracy = Math.round((matches / targetWords.length) * 100);
+            resBox.style.display = 'block';
+
+            if (accuracy >= 80) {
+                resBox.style.color = '#15803D';
+                resBox.style.background = '#DCFCE7';
+                resBox.innerHTML = `🎉 すばらしい！ (${accuracy}%)<br>発音: "<em>${spoken}</em>"`;
+                score1 += 2;
+                updateScoreDisplay();
+                showToast("🎤 発音バッチリ！ボーナス +2pt");
+            } else if (accuracy >= 50) {
+                resBox.style.color = '#B45309';
+                resBox.style.background = '#FEF3C7';
+                resBox.innerHTML = `👍 いい感じ！ (${accuracy}%)<br>認識: "<em>${spoken}</em>"`;
+            } else {
+                resBox.style.color = '#B91C1C';
+                resBox.style.background = '#FEE2E2';
+                resBox.innerHTML = `💪 もういちど！ (${accuracy}%)<br>認識: "<em>${spoken}</em>"`;
+            }
+        }
+
+        function formatGBP(pence) {
+            if (pence < 100) return `${pence}p`;
+            return `£${(pence / 100).toFixed(2)}`;
+        }
+
+        function priceToEnglishSpeech(pence) {
+            if (pence === 0) return "zero pence";
+            const pounds = Math.floor(pence / 100);
+            const remPence = pence % 100;
+            if (pounds === 0) return `${remPence} pence`;
+            if (remPence === 0) return pounds === 1 ? "one pound" : `${pounds} pounds`;
+            return `${pounds === 1 ? "one pound" : `${pounds} pounds`} ${remPence}`;
+        }
+
+        function launchGame() {
+            document.getElementById('start-screen').style.display = 'none';
+            loadEnglishVoice();
+
+            if (selectedDiff === 'easy') {
+                activeProducts = allProducts.filter(p => p.tier === 'easy');
+                if(activeProducts.length === 0) activeProducts = [...allProducts];
+            } else if (selectedDiff === 'med') {
+                activeProducts = allProducts.filter(p => p.tier === 'easy' || p.tier === 'med');
+                if(activeProducts.length === 0) activeProducts = [...allProducts];
+            } else {
+                activeProducts = [...allProducts];
+            }
+
+            buildCategoryTabs();
+            renderProducts('all');
+
+            roundNumber = 1;
+            score1 = 0;
+            score2 = 0;
+            updateScoreDisplay();
+
+            const diffNames = { easy: '⭐ Easy (かんたん)', med: '⭐⭐ Medium (ふつう)', hard: '⭐⭐⭐ Hard (むずかしい)' };
+            document.getElementById('diff-badge-display').textContent = diffNames[selectedDiff];
+
+            const sBox1 = document.getElementById('score-box-1');
+            const sBox2 = document.getElementById('score-box-2');
+
+            if (selectedMode === '2p') {
+                sBox1.innerHTML = `🛒 P1: <span id="score1">0</span>`;
+                sBox2.style.display = 'block';
+                sBox2.innerHTML = `🏪 P2: <span id="score2">0</span>`;
+            } else {
+                sBox1.innerHTML = `⭐ ポイント: <span id="score1">0</span>`;
+                sBox2.style.display = 'none';
+            }
+
+            setupNextRound();
+        }
+
+        function buildCategoryTabs() {
+            const tabsContainer = document.getElementById('category-tabs-container');
+            tabsContainer.innerHTML = `<button class="tab-btn active" onclick="filterCategory('all', this)">すべて (All)</button>`;
+
+            const categories = [...new Set(activeProducts.map(p => p.cat))];
+            const catNamesJp = {
+                'food': '🍎 食品',
+                'drinks': '🧃 飲み物',
+                'bakery': '🥐 パン',
+                'dessert': '🍰 デザート',
+                'fastfood': '🍔 バーガー'
+            };
+
+            categories.forEach(cat => {
+                const displayName = catNamesJp[cat] || `📁 ${cat}`;
+                const btn = document.createElement('button');
+                btn.className = 'tab-btn';
+                btn.textContent = displayName;
+                btn.onclick = (e) => filterCategory(cat, e.currentTarget);
+                tabsContainer.appendChild(btn);
+            });
+            currentCategoryFilter = 'all';
+        }
+
+        function updateScoreDisplay() {
+            const s1 = document.getElementById('score1');
+            const s2 = document.getElementById('score2');
+            if (s1) s1.textContent = score1;
+            if (s2) s2.textContent = score2;
+        }
+
+        function getRequiredCount() {
+            if (selectedDiff === 'easy') return 1;
+            if (selectedDiff === 'med') return 2;
+            return Math.random() > 0.5 ? 3 : 4;
+        }
+
+        function generateRandomOrder() {
+            const count = getRequiredCount();
+            const shuffled = [...activeProducts].sort(() => 0.5 - Math.random());
+            targetOrder = shuffled.slice(0, Math.min(count, shuffled.length));
+
+            const names = targetOrder.map(i => i.name);
+            let pool = customDialogs.p1;
+            if (targetOrder.length === 2) pool = customDialogs.p2;
+            else if (targetOrder.length === 3) pool = customDialogs.p3;
+            else if (targetOrder.length >= 4) pool = customDialogs.p4;
+
+            const randomTemplate = pool[Math.floor(Math.random() * pool.length)];
+            lastSpokenText = formatDialogTemplate(randomTemplate, names);
+        }
+
+        function setupNextRound() {
+            basket = [];
+            updateBasketUI();
+            document.getElementById('speech-result-box').style.display = 'none';
+            document.getElementById('round-info').textContent = `Round ${roundNumber}`;
+            const banner = document.getElementById('turn-banner');
+            const roleText = document.getElementById('turn-role-text');
+            const mainBtn = document.getElementById('main-action-btn');
+
+            if (selectedMode === '1p') {
+                if (roundNumber % 2 === 1) {
+                    turnPhase = '1p_buyer';
+                    banner.className = 'turn-banner buyer-turn';
+                    roleText.textContent = '🛒 あなたの役: おきゃくさん';
+                    document.getElementById('keeper-avatar').textContent = '👩‍💼';
+                    generateRandomOrder();
+                    document.getElementById('keeper-text-en').textContent = `"${lastSpokenText}"`;
+                    document.getElementById('keeper-text-jp').textContent = "発音練習をしてから商品を選ぼう！";
+                    mainBtn.textContent = "💷 おかいけいへ";
+                    setTimeout(() => speakEnglish(lastSpokenText), 300);
+                } else {
+                    turnPhase = '1p_seller_pick';
+                    banner.className = 'turn-banner seller-turn';
+                    roleText.textContent = '🛒 あなたの役: てんいんさん';
+                    document.getElementById('keeper-avatar').textContent = '🧒';
+                    generateRandomOrder();
+                    document.getElementById('keeper-text-en').textContent = `"${lastSpokenText}"`;
+                    document.getElementById('keeper-text-jp').textContent = "音声を聞いて正しい商品をかごに入れよう！";
+                    mainBtn.textContent = "📦 商品をわたす";
+                    setTimeout(() => speakEnglish(lastSpokenText), 300);
+                }
+            }
+
+            if (selectedMode === '2p') {
+                turnPhase = '2p_buyer_pick';
+                banner.className = 'turn-banner buyer-turn';
+                const limit = selectedDiff === 'easy' ? 1 : (selectedDiff === 'med' ? 2 : 4);
+                roleText.textContent = `🛒 P1 (おきゃく): ${limit}こまで商品を選ぼう！`;
+                document.getElementById('keeper-avatar').textContent = '🙋‍♂️';
+                lastSpokenText = customDialogs.start2p;
+                document.getElementById('keeper-text-en').textContent = `"${lastSpokenText}"`;
+                document.getElementById('keeper-text-jp').textContent = "P1は商品をかごに入れて注文しよう！";
+                mainBtn.textContent = "🗣️ ちゅうもんする";
+                setTimeout(() => speakEnglish(lastSpokenText), 300);
+            }
+        }
+
+        function renderProducts(category) {
+            currentCategoryFilter = category;
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+            const filtered = category === 'all' ? activeProducts : activeProducts.filter(p => p.cat === category);
+
+            filtered.forEach(prod => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <span class="sound-icon">🔊</span>
+                    <div class="product-emoji">${prod.emoji}</div>
+                    <div class="product-name-en">${prod.name}</div>
+                    <div class="product-price">${formatGBP(prod.price)}</div>
+                `;
+                card.onclick = () => handleProductClick(prod);
+                grid.appendChild(card);
+            });
+        }
+
+        function filterCategory(cat, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderProducts(cat);
+        }
+
+        function handleProductClick(prod) {
+            speakEnglish(prod.name);
+
+            const limit = selectedDiff === 'easy' ? 1 : (selectedDiff === 'med' ? 2 : 4);
+            if (turnPhase === '2p_buyer_pick' && basket.length >= limit) {
+                showToast(`⚠️ 最大${limit}こまでです！`);
+                return;
+            }
+
+            basket.push(prod);
+            updateBasketUI();
+        }
+
+        function updateBasketUI() {
+            const container = document.getElementById('basket-items');
+            const totalDisplay = document.getElementById('basket-total-display');
+
+            if (basket.length === 0) {
+                container.innerHTML = '<span style="color: #94A3B8; font-size: 0.78rem;">商品をタッチしてね！</span>';
+                totalDisplay.textContent = '£0.00';
+                return;
+            }
+
+            container.innerHTML = '';
+            let total = 0;
+            basket.forEach((item, idx) => {
+                total += item.price;
+                const chip = document.createElement('div');
+                chip.className = 'basket-chip';
+                chip.innerHTML = `${item.emoji} ${item.name} ✕`;
+                chip.onclick = () => {
+                    basket.splice(idx, 1);
+                    updateBasketUI();
+                };
+                container.appendChild(chip);
+            });
+            totalDisplay.textContent = formatGBP(total);
+        }
+
+        function clearBasket() {
+            basket = [];
+            updateBasketUI();
+        }
+
+        function repeatSpeech() {
+            if (lastSpokenText) speakEnglish(lastSpokenText);
+        }
+
+        function handleMainAction() {
+            if (basket.length === 0) {
+                showToast("⚠️ 商品を選んでね！");
+                return;
+            }
+
+            if (turnPhase === '2p_buyer_pick') {
+                targetOrder = [...basket];
+                basket = [];
+                updateBasketUI();
+                document.getElementById('speech-result-box').style.display = 'none';
+
+                turnPhase = '2p_seller_pick';
+                const banner = document.getElementById('turn-banner');
+                banner.className = 'turn-banner seller-turn';
+                document.getElementById('turn-role-text').textContent = '🏪 P2 (てんいん): 正しい商品をえらぼう！';
+                document.getElementById('keeper-avatar').textContent = '👩‍💼';
+
+                const names = targetOrder.map(i => i.name);
+                let pool = customDialogs.p1;
+                if (targetOrder.length === 2) pool = customDialogs.p2;
+                else if (targetOrder.length === 3) pool = customDialogs.p3;
+                else if (targetOrder.length >= 4) pool = customDialogs.p4;
+
+                const randomTemplate = pool[Math.floor(Math.random() * pool.length)];
+                lastSpokenText = formatDialogTemplate(randomTemplate, names);
+
+                document.getElementById('keeper-text-en').textContent = `"🎧 Listen to P1's order!"`;
+                document.getElementById('keeper-text-jp').textContent = "英語を聞き取って同じ商品をかごに入れよう！";
+                document.getElementById('main-action-btn').textContent = "📦 商品をわたす";
+
+                speakEnglish(lastSpokenText);
+                return;
+            }
+
+            const orderedIds = targetOrder.map(i => i.id).sort();
+            const basketIds = basket.map(i => i.id).sort();
+            const isMatch = orderedIds.length === basketIds.length &&
+                            orderedIds.every((val, idx) => val === basketIds[idx]);
+
+            targetBillPence = targetOrder.reduce((sum, item) => sum + item.price, 0);
+
+            if (!isMatch) {
+                speakEnglish("Oh no! Wrong items! No points.");
+                showToast("❌ 商品がちがいます！ポイントなし");
+                setTimeout(() => { roundNumber++; setupNextRound(); }, 2800);
+                return;
+            }
+
+            if (turnPhase === '1p_buyer') {
+                openPaymentModal('buyer_pays');
+            } 
+            else if (turnPhase === '1p_seller_pick') {
+                score1 += 5;
+                updateScoreDisplay();
+                showToast("✅ 商品せいかい (+5pt)！おつりを計算しよう！");
+
+                const possibleNotes = [500, 1000, 2000, 5000];
+                const validNotes = possibleNotes.filter(n => n >= targetBillPence);
+                buyerPaidPence = validNotes[Math.floor(Math.random() * validNotes.length)] || 5000;
+                expectedChangePence = buyerPaidPence - targetBillPence;
+
+                setTimeout(() => openPaymentModal('seller_gives_change'), 1400);
+            } 
+            else if (turnPhase === '2p_seller_pick') {
+                score2 += 5;
+                updateScoreDisplay();
+                showToast("✅ P2 商品せいかい (+5pt)！");
+                setTimeout(() => openPaymentModal('buyer_pays'), 1300);
+            }
+        }
+
+        function openPaymentModal(phase) {
+            paymentPhase = phase;
+            currentInputMoney = 0;
+            document.getElementById('payment-modal').style.display = 'flex';
+            document.getElementById('modal-speech-result-box').style.display = 'none';
+
+            const roleTitle = document.getElementById('modal-role-title');
+            const lbl1 = document.getElementById('pay-label-1');
+            const val1 = document.getElementById('pay-val-1');
+            const lbl2 = document.getElementById('pay-label-2');
+            const val2 = document.getElementById('pay-val-2');
+            const confirmBtn = document.getElementById('modal-confirm-btn');
+
+            if (phase === 'buyer_pays') {
+                roleTitle.textContent = selectedMode === '2p' ? "🛒 P1 (おきゃく)：お金をはらおう！" : "🛒 お金をはらおう！";
+                roleTitle.style.background = "#E63946";
+                lbl1.textContent = "おかいけい";
+                val1.textContent = formatGBP(targetBillPence);
+                lbl2.textContent = "だしたおかね";
+                val2.textContent = "£0.00";
+                confirmBtn.textContent = "✨ はらう";
+
+                let promptTpl = customDialogs.payPrompt || defaultDialogs.payPrompt;
+                lastModalSpokenText = promptTpl.replace('{price}', priceToEnglishSpeech(targetBillPence));
+                document.getElementById('modal-speech-en').textContent = `"${lastModalSpokenText}"`;
+
+                speakEnglish(lastModalSpokenText);
+            } 
+            else if (phase === 'seller_gives_change') {
+                roleTitle.textContent = selectedMode === '2p' ? "🏪 P2 (てんいん)：おつりをだそう！" : "🏪 おつりをだそう！";
+                roleTitle.style.background = "#2A9D8F";
+                lbl1.textContent = `もらったお金 (${formatGBP(buyerPaidPence)})`;
+                val1.textContent = `おつり: ???`;
+                lbl2.textContent = "わたすおつり";
+                val2.textContent = "£0.00";
+                confirmBtn.textContent = "💰 おつりをわたす";
+
+                let changeTpl = customDialogs.changePrompt || defaultDialogs.changePrompt;
+                lastModalSpokenText = changeTpl.replace('{paid}', priceToEnglishSpeech(buyerPaidPence));
+                document.getElementById('modal-speech-en').textContent = `"${lastModalSpokenText}"`;
+
+                speakEnglish(lastModalSpokenText);
+            }
+        }
+
+        function speakModalPrompt() {
+            if (lastModalSpokenText) speakEnglish(lastModalSpokenText);
+        }
+
+        function addMoney(pence) {
+            currentInputMoney += pence;
+            document.getElementById('pay-val-2').textContent = formatGBP(currentInputMoney);
+            speakEnglish(priceToEnglishSpeech(pence));
+        }
+
+        function resetPayment() {
+            currentInputMoney = 0;
+            document.getElementById('pay-val-2').textContent = '£0.00';
+        }
+
+        function confirmMoneyAction() {
+            if (paymentPhase === 'buyer_pays') {
+                if (currentInputMoney < targetBillPence) {
+                    document.getElementById('payment-modal').style.display = 'none';
+                    speakEnglish("Not enough money! No points!");
+                    showToast("❌ お金が足りません！ポイントなし");
+                    setTimeout(() => { roundNumber++; setupNextRound(); }, 2800);
+                    return;
+                }
+
+                buyerPaidPence = currentInputMoney;
+                expectedChangePence = buyerPaidPence - targetBillPence;
+
+                if (selectedMode === '1p') {
+                    score1 += 10;
+                    updateScoreDisplay();
+                    document.getElementById('payment-modal').style.display = 'none';
+                    if (expectedChangePence === 0) {
+                        speakEnglish("Exact change! Thank you!");
+                        showToast("🎉 ぴったり！せいかい (+10pt)");
+                    } else {
+                        speakEnglish(`Thank you! Here is your change, ${priceToEnglishSpeech(expectedChangePence)}.`);
+                        showToast(`🎉 おつり: ${formatGBP(expectedChangePence)} (+10pt)`);
+                    }
+                    setTimeout(() => { roundNumber++; setupNextRound(); }, 2800);
+                } 
+                else if (selectedMode === '2p') {
+                    score1 += 5;
+                    updateScoreDisplay();
+
+                    if (expectedChangePence === 0) {
+                        document.getElementById('payment-modal').style.display = 'none';
+                        speakEnglish("Exact change! Great job!");
+                        showToast("🎉 ぴったり！P1 (+5pt)");
+                        setTimeout(() => { roundNumber++; setupNextRound(); }, 2800);
+                    } else {
+                        showToast("✅ P1 支払いOK (+5pt)！P2がおつりを出そう！");
+                        openPaymentModal('seller_gives_change');
+                    }
+                }
+            } 
+            else if (paymentPhase === 'seller_gives_change') {
+                document.getElementById('payment-modal').style.display = 'none';
+
+                if (currentInputMoney === expectedChangePence) {
+                    if (selectedMode === '1p') score1 += 5;
+                    else score2 += 5;
+                    updateScoreDisplay();
+                    speakEnglish(`Perfect! ${priceToEnglishSpeech(expectedChangePence)} change. Thank you!`);
+                    showToast(`🎉 おつりせいかい (${formatGBP(expectedChangePence)}) +5pt!`);
+                } else {
+                    speakEnglish("Wrong change! No points!");
+                    showToast(`❌ おつりがちがいます！正解は ${formatGBP(expectedChangePence)}`);
+                }
+
+                setTimeout(() => { roundNumber++; setupNextRound(); }, 3000);
+            }
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 2800);
+        }
+    </script>
+</body>
+</html>
